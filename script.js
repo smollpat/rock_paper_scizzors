@@ -1,66 +1,59 @@
-
+   
 
     function getComputerChoise(){
-    let computerSelection = Math.floor(Math.random() * 3);
-    switch(computerSelection){
+    let choice1 = Math.floor(Math.random() * 3);
+    switch(choice1){
         case 0:
             return "rock";
         case 1:
             return "paper";
-        case 3: 
+        case 2: 
             return "scizzors";
         }
     }
 
-    function getUserChoise(selection) {
-        let userSelection = selection.toLowerCase();
-        return userSelection;
+    function getUserChoise() {
+        let choice2 = prompt("Choose rock, paper or scizzors").toLowerCase();
+        return choice2
     }
+    
+function game(){
+    let netWins = 0
+    for(let i = 0; i < 3; i++){
+       
+        let computerSelection = getComputerChoise();
+        let userSelection = getUserChoise();
+         
+            if(userSelection === computerSelection){
+                console.log("Draw!");
+            } else if(userSelection === "rock" && computerSelection === "scizzors"){
+                console.log("You won!");
+                netWins += 1 ;
+            } else if(userSelection === "scizzors" && computerSelection === "paper"){
+                console.log("You won!");
+                netWins += 1 ;
+            } else if(userSelection === "paper" && computerSelection === "rock"){
+                console.log("You won!");
+                netWins += 1 ;
+            } else if(userSelection === "rock" && computerSelection === "paper"){
+                console.log("You lose :(");
+                netWins -= 1 ;
+            } else if(userSelection === "paper" && computerSelection === "scizzors"){
+                console.log("You lose :(");
+                netWins -= 1 ;
+            } else if(userSelection === "scizzors" && computerSelection === "rock"){
+                console.log("You lose :(");
+                netWins -= 1 ;
+            } 
+    }
+    if(netWins < 0) {
+        console.log("Defeat");
+    } else if(netWins > 0 ){
+        console.log("Victory")
+    } else {
+        console.log("Draw")
+    }
+}
 
     
 
-    function playground(){
-        function getComputerChoise(){
-            let computerSelection = Math.floor(Math.random() * 3);
-            switch(computerSelection){
-                case 0:
-                    return "rock";
-                case 1:
-                    return "paper";
-                case 3: 
-                    return "scizzors";
-                }
-            }
-        
-            function getUserChoise(selection) {
-                let userSelection = selection.toLowerCase();
-                return userSelection;
-            }
-        if(userSelection === computerSelection){
-            return "Draw!";
-        } else if(userSelection === "rock" && computerSelection === "scizzors"){
-            return "You won!";
-        } else if(userSelection === "scizzors" && computerSelection === "paper"){
-            return "You won!";
-        } else if(userSelection === "paper" && computerSelection === "rock"){
-            return "You won!";
-        } else if(userSelection === "rock" && computerSelection === "paper"){
-            return "You lose :(";
-        } else if(userSelection === "paper" && computerSelection === "scizzors"){
-            return "You lose :(";
-        } else if(userSelection === "scizzors" && computerSelection === "rock"){
-            return "You lose :(";
-        }
-    }
-
-    
-
-
-/* 
-make a random computer choice +
-make a user choice +
-transform them to words + 
-make them play 1 round and show who won 
-make a loop for till one wins 5 times
-make a prompt to ask for users choice
- */
