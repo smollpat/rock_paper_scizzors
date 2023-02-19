@@ -11,7 +11,7 @@ function loser(){
     result.setAttribute('id', 'result')
     result.textContent = 'Defeat...';
     userWins = 0;
-    compWIns = 0;
+    compWins = 0;
 }
 
 function randomizer(){
