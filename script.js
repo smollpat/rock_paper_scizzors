@@ -1,59 +1,73 @@
-   
+function winner() {
+    const result = document.createElement('div');
+    result.setAttribute('id', 'result');
+    result.textContent = 'Victory!!!';
+    userWins = 0;
+    compWins = 0;
+}
 
-    function getComputerChoise(){
-    let choice1 = Math.floor(Math.random() * 3);
-    switch(choice1){
-        case 0:
-            return "rock";
-        case 1:
-            return "paper";
-        case 2: 
-            return "scizzors";
-        }
-    }
+function loser(){
+    const result = document.createElement('div');
+    result.setAttribute('id', 'result')
+    result.textContent = 'Defeat...';
+    userWins = 0;
+    compWIns = 0;
+}
 
-    function getUserChoise() {
-        let choice2 = prompt("Choose rock, paper or scizzors").toLowerCase();
-        return choice2
-    }
-    
-function game(){
-    let netWins = 0
-    for(let i = 0; i < 3; i++){
-       
-        let computerSelection = getComputerChoise();
-        let userSelection = getUserChoise();
-         
-            if(userSelection === computerSelection){
-                console.log("Draw!");
-            } else if(userSelection === "rock" && computerSelection === "scizzors"){
-                console.log("You won!");
-                netWins += 1 ;
-            } else if(userSelection === "scizzors" && computerSelection === "paper"){
-                console.log("You won!");
-                netWins += 1 ;
-            } else if(userSelection === "paper" && computerSelection === "rock"){
-                console.log("You won!");
-                netWins += 1 ;
-            } else if(userSelection === "rock" && computerSelection === "paper"){
-                console.log("You lose :(");
-                netWins -= 1 ;
-            } else if(userSelection === "paper" && computerSelection === "scizzors"){
-                console.log("You lose :(");
-                netWins -= 1 ;
-            } else if(userSelection === "scizzors" && computerSelection === "rock"){
-                console.log("You lose :(");
-                netWins -= 1 ;
-            } 
-    }
-    if(netWins < 0) {
-        console.log("Defeat");
-    } else if(netWins > 0 ){
-        console.log("Victory")
-    } else {
-        console.log("Draw")
+function randomizer(){
+    let random = Math.floor(Math.random() * 3);
+switch(random){
+    case 0:
+        return "rock";
+    case 1:
+        return "paper";
+    case 2: 
+        return "scizzors";
     }
 }
+    
+function game(){
+    let userSelection = this.id;
+    let computerSelection = randomizer();
+
+    
+    if(userSelection === computerSelection){
+        userWins += 0;   
+    } else if(userSelection === "rock" && computerSelection === "scizzors"){
+         userWins += 1 ;
+    } else if(userSelection === "scizzors" && computerSelection === "paper"){
+         userWins += 1 ;
+    } else if(userSelection === "paper" && computerSelection === "rock"){
+        userWins += 1 ;
+    } else if(userSelection === "rock" && computerSelection === "paper"){
+        compWins += 1 ;
+    } else if(userSelection === "paper" && computerSelection === "scizzors"){ 
+        compWins += 1 ;
+    } else if(userSelection === "scizzors" && computerSelection === "rock"){
+        compWins += 1 ;
+     } 
+
+     userScore.textContent = `Player: ${userWins}`;  
+     compScore.textContent = `Computer: ${compWins}`;
+
+    if(userWins === 5) {
+        winner();
+    } else if(compWins === 5){
+        loser();
+    } 
+    
+}
+
+
+let userWins = 0;
+let compWins = 0;
+const userScore = document.querySelector('#player');
+const compScore = document.querySelector('#computer');
+const buttons = document.querySelectorAll('button');
+buttons.forEach(button => button.addEventListener('click', game));
+
+
+
 
     
 
