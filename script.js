@@ -1,15 +1,14 @@
 function winner() {
-    const result = document.createElement('div');
-    result.setAttribute('id', 'result');
     result.textContent = 'Victory!!!';
     userWins = 0;
     compWins = 0;
+    body.appendChild(result);
 }
 
 function loser(){
-    const result = document.createElement('div');
-    result.setAttribute('id', 'result')
+    result.setAttribute('id', 'result');
     result.textContent = 'Defeat...';
+    body.appendChild(result);
     userWins = 0;
     compWins = 0;
 }
@@ -27,6 +26,9 @@ switch(random){
 }
     
 function game(){
+    if(userWins < 5 && compWins < 5){
+    result.textContent = '';
+    }
     let userSelection = this.id;
     let computerSelection = randomizer();
 
@@ -65,6 +67,10 @@ const userScore = document.querySelector('#player');
 const compScore = document.querySelector('#computer');
 const buttons = document.querySelectorAll('button');
 buttons.forEach(button => button.addEventListener('click', game));
+const body = document.querySelector('body');
+const result = document.createElement('div');
+result.setAttribute('id', 'result');
+
 
 
 
